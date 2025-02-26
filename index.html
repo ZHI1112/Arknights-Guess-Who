@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arknights Guess Who</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div id="themeToggle">
+      <button onclick="toggleTheme()">🌙 / ☀️</button>
+    </div>
+    <div id="content">
+      <h1>Arknights Guess Who</h1>
+
+      <!-- Instructions Section -->
+      <div id="instructions">
+        <h2>How to Play</h2>
+        <ul>
+          <li>Enter or generate a seed.</li>
+          <li>Share the seed with your opponent for the same board.</li>
+          <li>Press "Start Game" to begin.</li>
+        </ul>
+      </div>
+
+      <div class="input-container">
+        <label for="seedInput">Enter Seed:</label>
+        <input type="text" id="seedInput" placeholder="12345" />
+        <button onclick="generateRandomSeed()">Generate Seed</button>
+        <button onclick="copySeed()">Copy Seed</button>
+      </div>
+
+      <!-- Start Game Button, replaced with End Game Button once the game starts -->
+      <button id="startGameButton" onclick="startGame()">Start Game</button>
+      <button id="endGameButton" onclick="endGame()" style="display: none">
+        End Game
+      </button>
+
+      <!-- Hide these headings initially -->
+      <h2 id="yourBoardText" style="display: none">Your Board</h2>
+      <div id="board"></div>
+
+      <h2 id="yourOperatorText" style="display: none">Your Operator</h2>
+      <div id="secretCharacter"></div>
+    </div>
+  </body>
+</html>
