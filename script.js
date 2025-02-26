@@ -125,5 +125,5 @@ function endGame() {
 
   // Clear the seed input field
   document.getElementById("seedInput").value = "";
-}
+} 
 
