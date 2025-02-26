@@ -113,8 +113,7 @@ document.body.classList.add("dark-mode");
 function endGame() {
   // Hide the "End Game" button and show "Start Game" again
   document.getElementById("endGameButton").style.display = "none";
-  document.querySelector('button[onclick="startGame()"]').style.display =
-    "inline-block";
+  document.querySelector('button[onclick="startGame()"]').style.display = "inline-block";
 
   // Clear the board and secret character display
   document.getElementById("board").innerHTML = "";
@@ -123,4 +122,8 @@ function endGame() {
   // Hide the "Your Board" and "Your Operator" texts
   document.getElementById("yourBoardText").style.display = "none";
   document.getElementById("yourOperatorText").style.display = "none";
+
+  // Clear the seed input field
+  document.getElementById("seedInput").value = "";
 }
+
