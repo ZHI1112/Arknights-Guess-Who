@@ -22,7 +22,7 @@ function shuffleWithSeed(array, seed) {
 }
 
 function generateRandomSeed() {
-  const randomSeed = Math.floor(Math.random() * 1000000).toString();
+  const randomSeed = Math.floor(Math.random() * 1000000).toString().padStart(6, "0");
   document.getElementById("seedInput").value = randomSeed;
 }
 
@@ -37,8 +37,12 @@ function startGame() {
 
   // If the seed input is empty, generate a random seed
   if (!seedInput) {
-    seedInput = Math.floor(Math.random() * 1000000).toString();
-    document.getElementById("seedInput").value = seedInput; // Optionally update the input field with the random seed
+    seedInput = Math.floor(Math.random() * 1000000).toString().padStart(6, "0");
+    document.getElementById("seedInput").value = seedInput;
+  } else {
+    // Ensure the input seed is exactly 6 characters long
+    seedInput = seedInput.padStart(6, "0").slice(0, 6);
+    document.getElementById("seedInput").value = seedInput;
   }
 
   let seed = 0;
@@ -51,7 +55,7 @@ function startGame() {
     return;
   }
 
-  // Pick 24 avatars based on seed (same for both players)
+  // Pick 24 avatars based on seed
   let selectedAvatars = shuffleWithSeed(avatars, seed).slice(0, 24);
 
   // Different secret character per player
@@ -78,9 +82,8 @@ function startGame() {
   document.getElementById("yourBoardText").style.display = "block";
   document.getElementById("yourOperatorText").style.display = "block";
 
-  // Hide the "Start Game" button after the game starts
-  document.querySelector('button[onclick="startGame()"]').style.display =
-    "none";
+  // Hide the "Start Game" button
+  document.querySelector('button[onclick="startGame()"]').style.display = "none";
 
   // Show the "End Game" button
   document.getElementById("endGameButton").style.display = "inline-block";
