@@ -1,4 +1,6 @@
 let avatars = [];
+let isCustomMode = false;
+let selectedAvatars = [];
 
 fetch("avatars.json")
   .then((response) => response.json())
@@ -21,9 +23,7 @@ function shuffleWithSeed(array, seed) {
 }
 
 function generateRandomSeed() {
-  const randomSeed = Math.floor(
-    100000000 + Math.random() * 900000000
-  ).toString();
+  const randomSeed = Math.floor(100000000 + Math.random() * 900000000).toString();
   document.getElementById("seedInput").value = randomSeed;
 }
 
@@ -42,15 +42,16 @@ function copySeed() {
     }, 1000);
   });
 }
+
 function startGame() {
-  if(isCustomMode) {
-    if(selectedAvatars.length !== 24) {
+  if (isCustomMode) {
+    if (selectedAvatars.length !== 24) {
       alert('Please select exactly 24 operators!');
       return;
     }
     startCustomGame();
   } else {
-    if(!document.getElementById("seedInput").value.trim()) {
+    if (!document.getElementById("seedInput").value.trim()) {
       alert('Please enter or generate a seed!');
       return;
     }
@@ -75,10 +76,8 @@ function startCustomGame() {
   let secretDiv = document.getElementById("secretCharacter");
   secretDiv.innerHTML = `<img src="avatars/${secretCharacter}" class="secret-avatar">`;
 
-  // Hide custom selection UI
   document.getElementById("customSelectionUI").style.display = "none";
 
-  // Show game elements
   document.getElementById("yourBoardText").style.display = "block";
   document.getElementById("yourOperatorText").style.display = "block";
   document.getElementById("startGameButton").style.display = "none";
@@ -108,8 +107,7 @@ function startSeedGame() {
 
   let selectedAvatars = shuffleWithSeed(avatars, seed).slice(0, 24);
 
-  // Use a more unique seed for the secret character selection
-  let secretSeed = seed + performance.now(); // performance.now() provides higher precision
+  let secretSeed = seed + performance.now(); 
   let secretIndex = Math.floor(seededRandom(secretSeed) * 24);
   let secretCharacter = selectedAvatars[secretIndex];
 
@@ -136,19 +134,6 @@ function toggleHide(img) {
   img.classList.toggle("hidden");
 }
 
-function toggleTheme() {
-  const body = document.body;
-  if (body.classList.contains("dark-mode")) {
-    body.classList.remove("dark-mode");
-    body.classList.add("light-mode");
-  } else {
-    body.classList.remove("light-mode");
-    body.classList.add("dark-mode");
-  }
-}
-
-document.body.classList.add("dark-mode");
-
 function endGame() {
   document.getElementById("endGameButton").style.display = "none";
   document.getElementById("startGameButton").style.display = "inline-block";
@@ -161,8 +146,7 @@ function endGame() {
 
   document.getElementById("seedInput").value = "";
 
-  // Reset custom selection UI if in custom mode
-  if(isCustomMode) {
+  if (isCustomMode) {
     document.getElementById("customSelectionUI").style.display = "block";
     selectedAvatars = [];
     populateAvatarPool();
@@ -170,30 +154,36 @@ function endGame() {
   }
 }
 
-let isCustomMode = false;
-let selectedAvatars = [];
+function toggleTheme() {
+  const body = document.body;
+  if (body.classList.contains("dark-mode")) {
+    body.classList.remove("dark-mode");
+    body.classList.add("light-mode");
+  } else {
+    body.classList.remove("light-mode");
+    body.classList.add("dark-mode");
+  }
+}
 
 function toggleMode() {
-  // End the current game if switching modes
   if (document.getElementById("endGameButton").style.display !== "none") {
     endGame();
   }
 
   isCustomMode = !isCustomMode;
   document.body.classList.toggle('custom-mode', isCustomMode);
-  
+
   const modeToggle = document.getElementById('modeToggle');
   const customUI = document.getElementById('customSelectionUI');
   const inputContainer = document.querySelector('.input-container');
-  
+
   modeToggle.textContent = isCustomMode ? 'Switch to Seed Mode' : 'Switch to Custom Mode';
   customUI.style.display = isCustomMode ? 'block' : 'none';
   inputContainer.style.display = isCustomMode ? 'none' : 'flex';
-  
-  if(isCustomMode) {
+
+  if (isCustomMode) {
     populateAvatarPool();
   } else {
-    // Reset custom mode selections when switching back to seed mode
     selectedAvatars = [];
     document.getElementById('selectionCounter').textContent = 'Selected: 0/24';
   }
@@ -208,7 +198,6 @@ function populateAvatarPool() {
     img.src = "avatars/" + avatar;
     img.classList.add("avatar-selectable");
 
-    // Add selected class if already in selectedAvatars
     if (selectedAvatars.includes(avatar)) {
       img.classList.add("avatar-selected");
     }
@@ -217,10 +206,7 @@ function populateAvatarPool() {
     pool.appendChild(img);
   });
 
-  // Update counter display
-  document.getElementById(
-    "selectionCounter"
-  ).textContent = `Selected: ${selectedAvatars.length}/24`;
+  document.getElementById("selectionCounter").textContent = `Selected: ${selectedAvatars.length}/24`;
 }
 
 function toggleSelection(avatar, img) {
@@ -235,7 +221,5 @@ function toggleSelection(avatar, img) {
     img.classList.remove("avatar-selected");
   }
 
-  document.getElementById(
-    "selectionCounter"
-  ).textContent = `Selected: ${selectedAvatars.length}/24`;
+  document.getElementById("selectionCounter").textContent = `Selected: ${selectedAvatars.length}/24`;
 }
