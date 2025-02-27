@@ -9,10 +9,10 @@ Test your knowledge of Arknights Operators and challenge your friends to guess t
   2. Share the seed with your opponent.
   3. Start the game and try to guess the secret Operator by eliminating characters based on their traits.
 
-- **Custom Mode(Under Construction)**: Select 24 Operators to create a custom game board.
-  1. Place Holder
-  2. Place Holder
-  3. Place Holder
+- **Custom Mode(Under Construction)**: Select at least 24 Operators to create a custom game board.
+  1. Select or load a selection with a code
+  2. Share the generated selection code with your opponent
+  3. Press "Start Game" to begin
 
 ## Access the Game
 You can play the game here:  
