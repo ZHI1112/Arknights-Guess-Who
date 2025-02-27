@@ -28,31 +28,32 @@ function generateRandomSeed() {
 function copySeed() {
   const seed = document.getElementById("seedInput").value;
   const button = document.querySelector('button[onclick="copySeed()"]');
-  const originalText = button.textContent; // Save the original text
+  const originalText = button.textContent; 
 
   navigator.clipboard.writeText(seed).then(() => {
-    button.textContent = "Copied!"; // Change text to "Copied!"
-    button.style.backgroundColor = "ForestGreen"; // Change to green
+    button.textContent = "Copied!"; 
+    button.style.backgroundColor = "ForestGreen"; 
 
     setTimeout(() => {
-      button.textContent = originalText; // Reset text
-      button.style.backgroundColor = ""; // Reset color
-    }, 1000); // 1.5 seconds
+      button.textContent = originalText;
+      button.style.backgroundColor = ""; 
+    }, 1000); 
   });
 }
 
 function startGame() {
-  let seedInput = document.getElementById("seedInput").value;
+  let seedInput = document.getElementById("seedInput").value.trim();
 
-  if (!seedInput || isNaN(seedInput)) {
-    seedInput = Math.floor(100000000 + Math.random() * 900000000).toString();
+  if (!seedInput) {
+    seedInput = Math.floor(Math.random() * 1_000_000_000).toString().padStart(9, "0");
     document.getElementById("seedInput").value = seedInput;
   }
 
   let seed = 0;
   for (let i = 0; i < seedInput.length; i++) {
-    seed += seedInput.charCodeAt(i);
+    seed = (seed * 31 + seedInput.charCodeAt(i)) % 1_000_000_000; 
   }
+  seed = seed.toString().padStart(9, "0"); 
 
   if (avatars.length < 24) {
     alert("Avatar list not loaded yet. Try again.");
@@ -60,7 +61,8 @@ function startGame() {
   }
 
   let selectedAvatars = shuffleWithSeed(avatars, seed).slice(0, 24);
-  let playerSpecificSeed = seed + Date.now();
+
+  let playerSpecificSeed = seed + Date.now(); 
   let secretIndex = Math.floor(seededRandom(playerSpecificSeed) * 24);
   let secretCharacter = selectedAvatars[secretIndex];
 
@@ -80,9 +82,11 @@ function startGame() {
   document.getElementById("yourBoardText").style.display = "block";
   document.getElementById("yourOperatorText").style.display = "block";
 
-  document.querySelector('button[onclick="startGame()"]').style.display = "none";
+  document.getElementById("startGameButton").style.display = "none";
+
   document.getElementById("endGameButton").style.display = "inline-block";
 }
+
 
 function toggleHide(img) {
   img.classList.toggle("hidden");
