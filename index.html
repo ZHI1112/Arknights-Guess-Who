@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
-  <body>
+  <body class="dark-mode">
     <div id="themeToggle">
       <button onclick="toggleTheme()">🌙 / ☀️</button>
     </div>
@@ -25,10 +25,10 @@
 
       <div>
         <button onclick="toggleMode()" id="modeToggle">
-          Switch to Custom Mode(Under Construction)
+          Switch to Custom Mode (Under Construction)
         </button>
       </div>
-      
+
       <div class="input-container">
         <div class="seed-input-group">
           <label for="seedInput">Enter Seed:</label>
@@ -50,6 +50,7 @@
         <div id="avatarPool"></div>
         <div id="selectionCounter">Selected: 0/24</div>
       </div>
+
       <h2 id="yourBoardText" style="display: none">Your Board</h2>
       <div id="board"></div>
 
@@ -58,4 +59,3 @@
     </div>
   </body>
 </html>
-
