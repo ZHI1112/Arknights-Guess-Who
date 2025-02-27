@@ -44,7 +44,7 @@ function copySeed() {
 function startGame() {
   let seedInput = document.getElementById("seedInput").value;
 
-  if (!seedInput || seedInput.length !== 9 || isNaN(seedInput)) {
+  if (!seedInput || isNaN(seedInput)) {
     seedInput = Math.floor(100000000 + Math.random() * 900000000).toString();
     document.getElementById("seedInput").value = seedInput;
   }
