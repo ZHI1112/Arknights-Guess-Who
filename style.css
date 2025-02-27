@@ -38,8 +38,54 @@ h2 {
   margin-top: 30px;
 }
 
+/* Replace existing .input-container rules with these */
 .input-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 20px;
+}
+
+.input-container label {
+  width: 100%;
+  text-align: center;
+  margin-bottom: -10px; /* Adjust this value as needed */
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.input-container input {
+  padding: 10px;
+  font-size: 1rem;
+  width: 200px;
+  max-width: 100%;
+  height: 40px; /* Fixed height */
+  box-sizing: border-box;
+}
+
+.input-container button {
+  height: 40px; /* Match input height */
+  min-width: 120px; /* Prevent buttons from becoming too narrow */
+  box-sizing: border-box;
+}
+
+/* Add this media query for better mobile layout */
+@media (max-width: 480px) {
+  .input-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .input-container label {
+    margin-bottom: 0;
+  }
+
+  .input-container input,
+  .input-container button {
+    width: 100%;
+  }
 }
 
 #seedInput {
@@ -48,6 +94,20 @@ h2 {
   margin-right: 10px;
   width: 100%;
   max-width: 200px;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+@media (max-width: 480px) {
+  .input-group {
+    flex-direction: column;
+  }
 }
 
 button {
@@ -86,6 +146,12 @@ button:hover {
 .avatar.hidden {
   opacity: 0.3;
   filter: grayscale(100%);
+}
+
+.avatar-selected {
+  border-color: #4caf50 !important;
+  transform: scale(0.9);
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.6); /* Add glow effect for better visibility */
 }
 
 .secret-avatar {
@@ -201,7 +267,7 @@ body.light-mode .secret-avatar {
   }
 
   #board {
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
   }
 
@@ -231,7 +297,7 @@ body.light-mode .secret-avatar {
   }
 
   #board {
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .avatar {
@@ -243,4 +309,31 @@ body.light-mode .secret-avatar {
     width: 100px;
     height: 100px;
   }
+}
+
+#avatarPool {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  margin: 20px 0;
+}
+
+.avatar-selectable {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.avatar-selected {
+  border-color: #4caf50 !important;
+  transform: scale(0.9);
+}
+
+#selectionCounter {
+  font-weight: bold;
+  margin: 10px 0;
 }
