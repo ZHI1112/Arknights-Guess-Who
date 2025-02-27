@@ -23,11 +23,21 @@
         </ul>
       </div>
 
+      <div>
+        <button onclick="toggleMode()" id="modeToggle">
+          Switch to Custom Mode
+        </button>
+      </div>
+      
       <div class="input-container">
-        <label for="seedInput">Enter Seed:</label>
-        <input type="text" id="seedInput" placeholder="123456789" />
-        <button onclick="generateRandomSeed()">Generate Seed</button>
-        <button onclick="copySeed()">Copy Seed</button>
+        <div class="seed-input-group">
+          <label for="seedInput">Enter Seed:</label>
+          <input type="text" id="seedInput" placeholder="123456789" />
+        </div>
+        <div class="button-group">
+          <button onclick="generateRandomSeed()">Generate Seed</button>
+          <button onclick="copySeed()">Copy Seed</button>
+        </div>
       </div>
 
       <button id="startGameButton" onclick="startGame()">Start Game</button>
@@ -35,6 +45,11 @@
         End Game
       </button>
 
+      <div id="customSelectionUI" style="display: none">
+        <h2>Select 24 Operators</h2>
+        <div id="avatarPool"></div>
+        <div id="selectionCounter">Selected: 0/24</div>
+      </div>
       <h2 id="yourBoardText" style="display: none">Your Board</h2>
       <div id="board"></div>
 
@@ -43,3 +58,4 @@
     </div>
   </body>
 </html>
+
