@@ -8,23 +8,29 @@
     <script src="script.js" defer></script>
   </head>
   <body class="dark-mode">
+    <!-- Theme Toggle Button -->
     <div id="themeToggle">
       <button onclick="toggleTheme()">🌙 / ☀️</button>
     </div>
+
+    <!-- Main Content Container -->
     <div id="content">
       <h1>Arknights Guess Who</h1>
 
+      <!-- Game Instructions -->
       <div id="instructions">
         <h2>How to Play</h2>
         <ul id="instructionList"></ul>
       </div>
 
+      <!-- Mode Toggle Button -->
       <div>
         <button onclick="toggleMode()" id="modeToggle">
           Switch to Custom Mode
         </button>
       </div>
 
+      <!-- Seed Input Section -->
       <div class="input-container">
         <div class="seed-input-group">
           <label for="seedInput">Enter Seed:</label>
@@ -40,11 +46,13 @@
         </div>
       </div>
 
+      <!-- Start and End Game Buttons -->
       <button id="startGameButton" onclick="startGame()">Start Game</button>
       <button id="endGameButton" onclick="endGame()" style="display: none">
         End Game
       </button>
 
+      <!-- Custom Selection UI (Hidden by Default) -->
       <div id="customSelectionUI" style="display: none">
         <h2>Select At Least 24 Operators</h2>
         <div class="custom-code-container">
@@ -62,15 +70,20 @@
         </div>
         <div id="avatarPool"></div>
         <div id="selectionCounter">Selected: 0</div>
-        <button id="selectAllButton" onclick="selectAllAvatars()">;)</button>
+        <button id="selectAllButton" onclick="selectAllAvatars()">
+          ; )
+        </button>
       </div>
 
+      <!-- Game Board Section -->
       <h2 id="yourBoardText" style="display: none">Your Board</h2>
       <div id="board"></div>
 
+      <!-- Secret Operator Section -->
       <h2 id="yourOperatorText" style="display: none">Your Operator</h2>
       <div id="secretCharacter"></div>
 
+      <!-- Footer Section -->
       <footer>
         <p>
           Found a bug?

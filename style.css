@@ -1,3 +1,4 @@
+/* General Styles */
 body {
   font-family: "Arial", sans-serif;
   margin: 0;
@@ -17,6 +18,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Theme Toggle */
 #themeToggle {
   position: absolute;
   top: 20px;
@@ -24,6 +26,7 @@ body {
   z-index: 10;
 }
 
+/* Typography */
 h1,
 h2 {
   color: #fff;
@@ -38,6 +41,7 @@ h2 {
   margin-top: 30px;
 }
 
+/* Input Container */
 .input-container {
   display: flex;
   flex-wrap: wrap;
@@ -86,6 +90,7 @@ h2 {
   }
 }
 
+/* Seed Input */
 #seedInput {
   padding: 10px;
   font-size: 1rem;
@@ -94,20 +99,7 @@ h2 {
   max-width: 200px;
 }
 
-.input-group {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  width: 100%;
-  max-width: 600px;
-}
-
-@media (max-width: 480px) {
-  .input-group {
-    flex-direction: column;
-  }
-}
-
+/* Buttons */
 button {
   padding: 10px 15px;
   font-size: 1rem;
@@ -124,6 +116,7 @@ button:hover {
   background-color: #555;
 }
 
+/* Game Board */
 #board {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -159,6 +152,7 @@ button:hover {
   border-radius: 10px;
 }
 
+/* Select All Button */
 #selectAllButton {
   font-size: 1.2rem;
   padding: 5px 10px;
@@ -171,6 +165,11 @@ button:hover {
   transition: background-color 0.3s ease;
 }
 
+#selectAllButton:hover {
+  background-color: #45a049;
+}
+
+/* Custom Code Container */
 .custom-code-container {
   display: flex;
   align-items: center;
@@ -192,10 +191,7 @@ button:hover {
   min-width: 120px;
 }
 
-#selectAllButton:hover {
-  background-color: #45a049;
-}
-
+/* Dark Mode */
 body.dark-mode {
   background-color: #2b2b2b;
   color: #fff;
@@ -228,6 +224,7 @@ body.dark-mode .secret-avatar {
   border: 3px solid #ff8c8c;
 }
 
+/* Light Mode */
 body.light-mode {
   background-color: #f4f4f4;
   color: #333;
@@ -262,6 +259,7 @@ body.light-mode .secret-avatar {
   border: 3px solid #ff4c4c;
 }
 
+/* End Game Button */
 #endGameButton {
   padding: 10px 20px;
   background-color: #ff4c4c;
@@ -278,11 +276,13 @@ body.light-mode .secret-avatar {
   background-color: #e04343;
 }
 
+/* Instructions */
 #instructions ul {
   list-style-type: none;
   padding-left: 0;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   h1 {
     font-size: 2rem;
@@ -346,6 +346,7 @@ body.light-mode .secret-avatar {
   }
 }
 
+/* Avatar Pool */
 #avatarPool {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -368,12 +369,14 @@ body.light-mode .secret-avatar {
   transform: scale(0.9);
 }
 
+/* Selection Counter */
 #selectionCounter {
   font-weight: bold;
   margin: 10px 0;
   font-size: 1.1rem;
 }
 
+/* Footer */
 footer {
   margin-top: 40px;
   padding: 20px;

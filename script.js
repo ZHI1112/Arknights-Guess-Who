@@ -2,12 +2,14 @@ let avatars = [];
 let isCustomMode = false;
 let selectedAvatars = [];
 
+// Fetch avatars data
 fetch("avatars.json")
   .then((response) => response.json())
   .then((data) => {
     avatars = data;
   });
 
+// Update instructions based on the current mode
 function updateInstructions() {
   const instructionList = document.getElementById("instructionList");
 
@@ -26,12 +28,13 @@ function updateInstructions() {
   }
 }
 
-
+// Seed-based random number generator
 function seededRandom(seed) {
   let x = Math.sin(seed) * 10000;
   return x - Math.floor(x);
 }
 
+// Shuffle array using a seed
 function shuffleWithSeed(array, seed) {
   let shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -41,6 +44,7 @@ function shuffleWithSeed(array, seed) {
   return shuffled;
 }
 
+// Generate a random seed
 function generateRandomSeed() {
   const randomSeed = Math.floor(
     100000000 + Math.random() * 900000000
@@ -48,6 +52,7 @@ function generateRandomSeed() {
   document.getElementById("seedInput").value = randomSeed;
 }
 
+// Copy seed to clipboard
 function copySeed() {
   const seed = document.getElementById("seedInput").value;
   const button = document.querySelector('button[onclick="copySeed()"]');
@@ -69,6 +74,7 @@ function copySeed() {
   });
 }
 
+// Generate a custom selection code
 function generateCustomSelectedCode() {
   if (selectedAvatars.length < 24) {
     alert("Please select at least 24 operators!");
@@ -82,6 +88,7 @@ function generateCustomSelectedCode() {
   document.getElementById("customCodeInput").value = code;
 }
 
+// Apply a custom selection code
 function applyCustomSelectedCode() {
   const code = document.getElementById("customCodeInput").value.trim();
   if (!code) {
@@ -111,6 +118,7 @@ function applyCustomSelectedCode() {
   }
 }
 
+// Copy custom code to clipboard
 function copyCustomCode() {
   const code = document.getElementById("customCodeInput").value;
   const button = document.querySelector('button[onclick="copyCustomCode()"]');
@@ -132,10 +140,12 @@ function copyCustomCode() {
   });
 }
 
+// Toggle visibility of an avatar
 function toggleHide(img) {
   img.classList.toggle("hidden");
 }
 
+// Start the game based on the current mode
 function startGame() {
   if (isCustomMode) {
     if (selectedAvatars.length < 24) {
@@ -154,6 +164,7 @@ function startGame() {
   document.getElementById("selectAllButton").style.display = "none";
 }
 
+// Start a custom game
 function startCustomGame() {
   const secretIndex = Math.floor(Math.random() * selectedAvatars.length);
   const secretCharacter = selectedAvatars[secretIndex];
@@ -178,6 +189,7 @@ function startCustomGame() {
   document.getElementById("endGameButton").style.display = "inline-block";
 }
 
+// Start a seed-based game
 function startSeedGame() {
   let seedInput = document.getElementById("seedInput").value.trim();
 
@@ -224,6 +236,7 @@ function startSeedGame() {
   document.getElementById("endGameButton").style.display = "inline-block";
 }
 
+// Select or deselect all avatars
 function selectAllAvatars() {
   if (selectedAvatars.length === avatars.length) {
     selectedAvatars = [];
@@ -237,6 +250,7 @@ function selectAllAvatars() {
   ).textContent = `Selected: ${selectedAvatars.length}`;
 }
 
+// End the game and reset the UI
 function endGame() {
   document.getElementById("endGameButton").style.display = "none";
   document.getElementById("startGameButton").style.display = "inline-block";
@@ -259,6 +273,7 @@ function endGame() {
   }
 }
 
+// Toggle between dark and light themes
 function toggleTheme() {
   const body = document.body;
   if (body.classList.contains("dark-mode")) {
@@ -270,6 +285,7 @@ function toggleTheme() {
   }
 }
 
+// Toggle between custom and seed modes
 function toggleMode() {
   if (document.getElementById("endGameButton").style.display !== "none") {
     endGame();
@@ -296,10 +312,11 @@ function toggleMode() {
     document.getElementById("selectionCounter").textContent = "Selected: 0";
     document.getElementById("selectAllButton").style.display = "none";
   }
-  
+
   updateInstructions();
 }
 
+// Populate the avatar pool for custom mode
 function populateAvatarPool() {
   const pool = document.getElementById("avatarPool");
   pool.innerHTML = "";
@@ -322,6 +339,7 @@ function populateAvatarPool() {
   ).textContent = `Selected: ${selectedAvatars.length}`;
 }
 
+// Toggle selection of an avatar
 function toggleSelection(avatar, img) {
   const index = selectedAvatars.indexOf(avatar);
 
@@ -338,4 +356,5 @@ function toggleSelection(avatar, img) {
   ).textContent = `Selected: ${selectedAvatars.length}`;
 }
 
+// Initialize instructions on page load
 document.addEventListener("DOMContentLoaded", updateInstructions);
