@@ -32,7 +32,7 @@ function copySeed() {
 
   navigator.clipboard.writeText(seed).then(() => {
     button.textContent = "Copied!"; // Change text to "Copied!"
-    button.style.backgroundColor = "Lime"; // Change to green
+    button.style.backgroundColor = "ForestGreen"; // Change to green
 
     setTimeout(() => {
       button.textContent = originalText; // Reset text
