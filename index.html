@@ -1,67 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arknights Guess Who</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
-</head>
-<body class="dark-mode">
-  <div id="themeToggle">
-    <button onclick="toggleTheme()">🌙 / ☀️</button>
-  </div>
-  <div id="content">
-    <h1>Arknights Guess Who</h1>
-
-    <div id="instructions">
-      <h2>How to Play</h2>
-      <ul>
-        <li>Enter or generate a board seed</li>
-        <li>Share the board seed with your opponent</li>
-        <li>Press "Start Game" to begin</li>
-      </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arknights Guess Who</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body class="dark-mode">
+    <div id="themeToggle">
+      <button onclick="toggleTheme()">🌙 / ☀️</button>
     </div>
+    <div id="content">
+      <h1>Arknights Guess Who</h1>
 
-    <div>
-      <button onclick="toggleMode()" id="modeToggle">
-        Switch to Custom Mode (Under Construction)
+      <div id="instructions">
+        <h2>How to Play</h2>
+        <ul id="instructionList"></ul>
+      </div>
+
+      <div>
+        <button onclick="toggleMode()" id="modeToggle">
+          Switch to Custom Mode
+        </button>
+      </div>
+
+      <div class="input-container">
+        <div class="seed-input-group">
+          <label for="seedInput">Enter Seed:</label>
+          <input
+            type="text"
+            id="seedInput"
+            placeholder="Paste or generate seed"
+          />
+        </div>
+        <div class="button-group">
+          <button onclick="generateRandomSeed()">Generate Seed</button>
+          <button onclick="copySeed()">Copy Seed</button>
+        </div>
+      </div>
+
+      <button id="startGameButton" onclick="startGame()">Start Game</button>
+      <button id="endGameButton" onclick="endGame()" style="display: none">
+        End Game
       </button>
-    </div>
 
-    <div class="input-container">
-      <div class="seed-input-group">
-        <label for="seedInput">Enter Seed:</label>
-        <input type="text" id="seedInput" placeholder="123456789" />
+      <div id="customSelectionUI" style="display: none">
+        <h2>Select At Least 24 Operators</h2>
+        <div class="custom-code-container">
+          <label for="customCodeInput"><strong>Selection Code:</strong></label>
+          <input
+            type="text"
+            id="customCodeInput"
+            placeholder="Paste or generate code"
+          />
+          <button onclick="applyCustomSelectedCode()">Load Selection</button>
+        </div>
+        <div class="custom-code-container">
+          <button onclick="generateCustomSelectedCode()">Generate Code</button>
+          <button onclick="copyCustomCode()">Copy Code</button>
+        </div>
+        <div id="avatarPool"></div>
+        <div id="selectionCounter">Selected: 0</div>
+        <button id="selectAllButton" onclick="selectAllAvatars()">;)</button>
       </div>
-      <div class="button-group">
-        <button onclick="generateRandomSeed()">Generate Seed</button>
-        <button onclick="copySeed()">Copy Seed</button>
-      </div>
+
+      <h2 id="yourBoardText" style="display: none">Your Board</h2>
+      <div id="board"></div>
+
+      <h2 id="yourOperatorText" style="display: none">Your Operator</h2>
+      <div id="secretCharacter"></div>
+
+      <footer>
+        <p>
+          Found a bug?
+          <a
+            href="https://github.com/ZHI1112/Arknights-Guess-Who/issues"
+            target="_blank"
+            >Report it here</a
+          >.
+        </p>
+      </footer>
     </div>
-
-    <button id="startGameButton" onclick="startGame()">Start Game</button>
-    <button id="endGameButton" onclick="endGame()" style="display: none">
-      End Game
-    </button>
-
-    <div id="customSelectionUI" style="display: none">
-      <h2>Select 24 Operators</h2>
-      <div id="avatarPool"></div>
-      <div id="selectionCounter">Selected: 0/24</div>
-    </div>
-
-    <h2 id="yourBoardText" style="display: none">Your Board</h2>
-    <div id="board"></div>
-
-    <h2 id="yourOperatorText" style="display: none">Your Operator</h2>
-    <div id="secretCharacter"></div>
-
-    <footer>
-      <p>
-        Found a bug? <a href="https://github.com/ZHI1112/Arknights-Guess-Who/issues" target="_blank">Report it here</a>.
-      </p>
-    </footer>
-  </div>
-</body>
+  </body>
 </html>
