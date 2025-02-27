@@ -27,7 +27,17 @@ function generateRandomSeed() {
 
 function copySeed() {
   const seed = document.getElementById("seedInput").value;
+  const button = document.querySelector('button[onclick="copySeed()"]');
+  const originalText = button.textContent; // Save the original text
+
   navigator.clipboard.writeText(seed).then(() => {
+    button.textContent = "Copied!"; // Change text to "Copied!"
+    button.style.backgroundColor = "Lime"; // Change to green
+
+    setTimeout(() => {
+      button.textContent = originalText; // Reset text
+      button.style.backgroundColor = ""; // Reset color
+    }, 1000); // 1.5 seconds
   });
 }
 
