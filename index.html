@@ -8,7 +8,6 @@
     <script src="script.js" defer></script>
   </head>
   <body class="dark-mode">
-    
     <!-- Google tag (gtag.js) -->
     <script
       async
@@ -20,13 +19,22 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-51X2JPV4M2");
     </script>
-    
+
     <!-- Theme Toggle Button -->
     <div id="themeToggle">
       <button onclick="toggleTheme()">🌙 / ☀️</button>
+    </div>
+
+    <!-- Language Selection -->
+    <div id="languageSelector">
+      <select id="langSelect">
+        <option value="en">English</option>
+        <option value="jp">日本語</option>
+        <option value="kr">한국어</option>
+        <option value="cn">中文</option>
+      </select>
     </div>
 
     <!-- Main Content Container -->
@@ -86,9 +94,7 @@
         </div>
         <div id="avatarPool"></div>
         <div id="selectionCounter">Selected: 0</div>
-        <button id="selectAllButton" onclick="selectAllAvatars()">
-          ; )
-        </button>
+        <button id="selectAllButton" onclick="selectAllAvatars()">; )</button>
       </div>
 
       <!-- Game Board Section -->

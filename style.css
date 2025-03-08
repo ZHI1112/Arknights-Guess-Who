@@ -109,6 +109,7 @@ button {
   border-radius: 5px;
   border: 1px solid #555;
   background-color: #444;
+  color: #fff;
   transition: background-color 0.3s ease;
 }
 
@@ -191,40 +192,41 @@ button:hover {
   min-width: 120px;
 }
 
-/* Dark Mode */
-body.dark-mode {
-  background-color: #2b2b2b;
-  color: #fff;
+/* Language Selector */
+#languageSelector {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
 }
 
-body.dark-mode h1,
-body.dark-mode h2 {
-  color: #fff;
-}
-
-body.dark-mode #content {
-  background-color: #333;
-}
-
-body.dark-mode button {
+#langSelect {
   background-color: #444;
+  color: white;
   border: 1px solid #555;
-  color: #fff;
+  border-radius: 5px;
+  padding: 8px 30px 8px 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
 }
 
-body.dark-mode button:hover {
+#langSelect:hover {
   background-color: #555;
+  border-color: #666;
 }
 
-body.dark-mode #board .avatar {
-  border: 2px solid #bbb;
+#langSelect option {
+  background-color: #444;
+  color: white;
 }
 
-body.dark-mode .secret-avatar {
-  border: 3px solid #ff8c8c;
-}
-
-/* Light Mode */
+/* Light Mode Styles */
 body.light-mode {
   background-color: #f4f4f4;
   color: #333;
@@ -257,6 +259,23 @@ body.light-mode #board .avatar {
 
 body.light-mode .secret-avatar {
   border: 3px solid #ff4c4c;
+}
+
+body.light-mode #langSelect {
+  background-color: #eee;
+  color: #333;
+  border: 1px solid #ccc;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+}
+
+body.light-mode #langSelect:hover {
+  background-color: #ccc;
+  border-color: #bbb;
+}
+
+body.light-mode #langSelect option {
+  background-color: #eee;
+  color: #333;
 }
 
 /* End Game Button */
