@@ -49,7 +49,7 @@ const translations = {
     selectAtLeast24Operators: "Please select at least 24 operators!",
     enterOrGenerateSeed: "Please enter or generate a seed!",
     invalidSelection:
-      "Invalid or incomplete selection. Make sure at least 24 valid operators are selected.",
+      "Invalid or incomplete selection. Make sure at least 24 operators are selected.",
     invalidCustomCode: "Invalid Custom Selected Code!",
     avatarListNotLoaded: "Avatar list not loaded yet. Try again.",
   },
@@ -142,7 +142,7 @@ const translations = {
   },
   cn: {
     title: "明日方舟 猜猜我是谁",
-    howToPlay: "游戏规则",
+    howToPlay: "如何游玩",
     instructions: [
       "输入或生成棋盘种子",
       "与对手分享棋盘种子",
@@ -177,7 +177,7 @@ const translations = {
     noCustomCodeToCopy: "没有自定义选择代码可复制！",
     selectAtLeast24Operators: "请选择至少24名干员！",
     enterOrGenerateSeed: "请输入或生成种子！",
-    invalidSelection: "无效或不完整的选择。请确保至少选择24名有效的干员。",
+    invalidSelection: "无效或不完整的选择。请确保至少选择24名干员。",
     invalidCustomCode: "无效的自定义选择代码！",
     avatarListNotLoaded: "干员列表尚未加载，请重试。",
   },
